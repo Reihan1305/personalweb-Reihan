@@ -1,0 +1,37 @@
+nav{
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 50px;
+}
+
+nav div .right{
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    list-style-type: none;
+}
+
+.right img{
+    margin-right: 10px;
+    width: 50px;
+}
+
+NAV DIV .right A{
+    margin-left: 20px;
+    text-decoration: NONE;
+    color: #111727 ;;
+}
+
+.left a{
+   background-color:#111727 ;
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+.active {
+    font-weight: bolder;
+}

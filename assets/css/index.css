@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #dce0e4;
+}
+.container-card{ 
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    padding:30px 30px;
+    width: 750px;
+    margin:auto; 
+    margin-top: 50px;
+    border-radius: 5px;
+    box-shadow: 0 0 3px black;
+}
+
+.container-card p{
+    text-align: justify;
+}
+
+.card-right{
+    width: 80%;
+    margin: auto 50px auto 0 ;
+}
+
+.container-download{
+    display: flex;
+    margin: 30px auto;
+}
+.contact{
+    background-color: #111727;
+    padding: 5px 20px;
+    border-radius: 10px;
+    text-align: center; 
+    color: white;
+    text-decoration: none;
+}
+
+.download{
+    margin-left: 20px;
+    margin-top: 5px; 
+    text-decoration: none; 
+    color: black ;
+}
+
+.container-icon{
+    display: flex;
+    width: auto;
+    text-align: center; 
+    margin: 50px auto;
+}
+
+.icon{
+    text-decoration: none; 
+    color: black; 
+    margin:8px
+}
+
+.container-img{
+    width: 30%;;
+    border-radius: 5px;
+    box-shadow: 0 0 3px black;
+}
+
+.container-img img{
+    width: 100%; 
+    border-radius: 5px 5px 0 0;
+}
+.img-info P,.img-info H2{
+    text-align: center;
+}

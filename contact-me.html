@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="assets/css/form.css" rel="stylesheet"/>
+    <link href="assets/css/navbar.css" rel="stylesheet"/>
+    <title>personal web</title>
+</head>
+<body>
+    <!-- navbar start -->
+     <nav>
+        <div>
+            <ul class="right">
+                <a href="index.html"><img src="assets/img/brandred.png"/></a>
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+                <li>
+                    <a href="my-project.html">My project</a>
+                </li>
+            </ul>
+        </div>
+        <div class="left">
+            <a href="contact-me.html">Contact me</a>
+        </div>
+     </nav>
+
+
+    <!-- form start -->
+    <form>
+        <h1>Get In The Touch</h1>
+        <div>
+            <label style="display: flex;" for="Name">Name</label>
+            <input id="name" type="text"/>
+        </div>
+        <div>
+            <label for="email">Email</label>
+            <input id="email" type="email"/>
+        </div>
+        <div>
+            <label for="phonenumber">Phone number</label>
+            <input id="phonenumber" type="number"/>
+        </div>
+        <div>
+            <label for="subject">Subject</label>
+            <select id="subject">
+                <option hidden></option>
+                <option>Fullstack Developer</option>
+                <option>Frontend Developer</option>
+                <option>backend Developer</option>
+            </select>
+        </div>
+        <div>
+            <label for="message">Your message</label>
+            <textarea id="message"></textarea>
+        </div>
+        <div class="btn-submit">
+            <button type="button" onclick="submitData()">submit</button>
+        </div>
+    </form>
+    <script src="assets/JS/script.js"></script>
+</body>
+</html>
