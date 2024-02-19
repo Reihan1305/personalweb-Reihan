@@ -26,7 +26,7 @@ body {
 }
 
 .card-right{
-    width: 80%;
+    flex: 80%;
     margin: auto 50px auto 0 ;
 }
 
@@ -64,7 +64,7 @@ body {
 }
 
 .container-img{
-    width: 30%;;
+    flex: 30%;;
     border-radius: 5px;
     box-shadow: 0 0 3px black;
 }
@@ -75,4 +75,45 @@ body {
 }
 .img-info P,.img-info H2{
     text-align: center;
+}
+
+@media screen and (max-width:700px){
+    .container-card{
+        margin: 50px auto ;
+        flex-direction: column;
+        justify-content: center;
+        flex: 100%;
+        width: 80%;
+        padding: 5px 20px;
+    }
+    h2{
+        font-size: small;
+        margin-bottom: 5px;
+        text-align: start;
+    }
+    .card-right{
+        font-size: small;
+        padding: 2px 20px;
+        flex: 100%;
+        margin: auto;
+    }
+    .container-download{
+        margin-top: 20px;
+    }
+    .contact{
+        padding: 2px 10px;
+    }
+    .download{
+        font-size: small;
+        margin: 5px 10px auto;
+    }
+    .container-icon{
+        justify-content: center;
+        align-items: center;
+    }
+    .container-img{
+        font-size: small;
+        margin-bottom: 40px;
+        flex: 100%;
+    }
 }

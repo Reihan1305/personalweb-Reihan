@@ -130,7 +130,7 @@ textarea{
     justify-content: end;
 }
 
-button{
+form button{
     margin-top: 10px;
     color: white;
     background-color: #111727;
@@ -150,13 +150,13 @@ button{
   }
   .container-blog{
     margin-top: 30PX; 
-    padding: 5PX; 
     display: flex; 
     gap: 50PX; 
-    flex-direction: ROW; 
+    flex-direction: row; 
     flex-wrap: wrap; 
     justify-content: center; 
     width:100%;
+    height: 100%;
   }
   
   .container-content{
@@ -172,7 +172,7 @@ button{
   .img-content{
     margin: 0 0 10px 0;
     border-radius: 5px;
-    width:100% ;
+    flex:100% ;
     height: 200px;
     object-fit: cover;    
     display: flex;
@@ -191,7 +191,7 @@ button{
     font-size: smaller;
   }
   .paragraph-content{
-    height: 55PX;
+    height: 100%;
     font-weight: normal;
     font-size: 14px;
     line-height: 20px;
@@ -201,8 +201,8 @@ button{
   .icon-content{
     gap: 10px;
     margin-top: 10PX;
-    width: 100%;
-    height: 20px;
+    flex: 100%;
+    height: 10px;
     display: flex;
     justify-content: start;
     align-items: center;
@@ -213,12 +213,41 @@ button{
     gap: 10px; 
     justify-content:center;
     align-items: end;
-    width: 100%;
+    flex: 50%;
   }
   .btn-content button {
-    width: 50%; 
+    flex: 20%; 
     padding: 10px; 
     border-radius: 5px; 
     background-color:#111727 ; 
     color: white;
+  }
+
+  @media screen and ( max-width:700px ) {
+    .container-content,.title-content,.duration-content,.paragraph-content,.btn-content{
+      font-size: xx-small;
+    }
+    .container-content{ 
+        width:150px; 
+        height:250px;
+      } 
+
+      .icon-content{
+        gap: 10px;
+        margin-top: 5PX;
+        flex: 100%;
+        height: 10px;
+      }
+
+      .btn-content{
+        margin: 0;
+        align-items: center;
+      }
+      .btn-content button{
+        flex: 20%; 
+        padding: 3px; 
+        border-radius: 5px; 
+        background-color:#111727 ; 
+        color: white;
+      }
   }

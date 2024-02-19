@@ -34,24 +34,23 @@ function renderProject() {
     for( let index = 0; index < dataprojects.length; index ++ ) {
         
         
-        document.getElementById("content").innerHTML +=` 
+        document.getElementById("content").innerHTML +=`
         <div class="container-content">
-            <img class="img-content" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVEVz04ruvOU-hqMa46ZV_jPTb3Db0XNBLiw&usqp=CAU" /> 
-            <a style="text-decoration:none; " href="project-detail.html"><h2 class="title-content">${dataprojects[index].title}</h2><a>
-            <p class="duration-content">${getDate(dataprojects[index].startDate,dataprojects[index].endDate)}</p>
-            <p class="paragraph-content">${dataprojects[index].project}</p>
-            <div class="icon-content">
-               ${dataprojects[index].reactjs ? `<i class="fa-brands fa-react fa-lg"></i>`:""}
-               ${dataprojects[index].nodejs ? `<i class="fa-brands fa-node fa-lg"></i>` :""}
-               ${dataprojects[index].python ? `<i class="fa-brands fa-python fa-lg"></i>` :""} 
-               ${dataprojects[index].github ?  '<i class="fa-brands fa-github fa-lg"></i>' :""} 
-            </div>
-                <div class="btn-content">
-                    <button>Edit </button>
-                    <button>Delete</button>
-                </div>
+        <img class="img-content" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVEVz04ruvOU-hqMa46ZV_jPTb3Db0XNBLiw&usqp=CAU" /> 
+        <h4 class="title-content">${dataprojects[index].title}</h4>
+        <p class="duration-content">${getDate(dataprojects[index].startDate,dataprojects[index].endDate)}</p>
+        <p class="paragraph-content">${dataprojects[index].project}</p>
+        <div class="icon-content">
+        ${dataprojects[index].reactjs ? `<i class="fa-brands fa-react fa-lg"></i>`:""}
+        ${dataprojects[index].nodejs ? `<i class="fa-brands fa-node fa-lg"></i>` :""}
+        ${dataprojects[index].python ? `<i class="fa-brands fa-python fa-lg"></i>` :""} 
+        ${dataprojects[index].github ?  '<i class="fa-brands fa-github fa-lg"></i>' :""} 
         </div>
-        `
+            <div class="btn-content">
+                <button>Edit </button>
+                <button>Delete</button>
+            </div>
+    </div>`
     }
 }
 renderProject();

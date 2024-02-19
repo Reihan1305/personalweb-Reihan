@@ -48,7 +48,7 @@ textarea{
     justify-content: end;
 }
 
-button{
+form button{
     margin-top: 10px;
     color: white;
     background-color: #111727;
