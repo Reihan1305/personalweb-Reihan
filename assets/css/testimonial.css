@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #dce0e4;
+}
+
+.testimonial-head{
+    margin-top: 20px;
+    text-align: center;
+}
+
+.container-testimonial{
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.testimonial{
+    background-color: white;
+    box-shadow: 0 0 10px black; 
+    border-radius: 10px;
+    width: 400px;
+    height: 320px;
+    overflow: hidden;
+    padding: 10px;
+}
+
+.testimonial p{
+    height: 80px;
+    overflow: hidden;
+}
+
+.testimonial img{
+    border-radius: 10px 10px 0 0;
+    width: 400px; 
+    height:200px;
+    object-fit: cover;
+}
+
+.testimonial h3{
+    text-align: end;}
+
+@media screen and (max-width:700px ) {
+    .container-testimonial{
+        display: flex;
+        flex-direction: column;
+    }
+    .testimonial{
+        width: 300px;
+    }
+    .testimonial img{
+        width: 300px;
+    }
+}
