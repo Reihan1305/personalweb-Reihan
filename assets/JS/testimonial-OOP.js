@@ -1,3 +1,4 @@
+// OOP Concept//
 class person{
     constructor (name,quote,img){
         this._name = name;

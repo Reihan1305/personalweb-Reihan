@@ -20,6 +20,7 @@ body {
     gap: 20px;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .testimonial{
@@ -42,6 +43,18 @@ body {
     width: 400px; 
     height:200px;
     object-fit: cover;
+}
+
+.container-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.btn-filter{
+    padding: 10px; border-radius: 10px; border: none; color: white;
+    background-color: black;
 }
 
 .testimonial h3{
