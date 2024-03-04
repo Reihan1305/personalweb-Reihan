@@ -35,22 +35,24 @@ function renderProject() {
         
         
         document.getElementById("content").innerHTML +=`
-        <div class="container-content">
-        <img class="img-content" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVEVz04ruvOU-hqMa46ZV_jPTb3Db0XNBLiw&usqp=CAU" /> 
-        <h4 class="title-content">${dataprojects[index].title}</h4>
-        <p class="duration-content">${getDate(dataprojects[index].startDate,dataprojects[index].endDate)}</p>
-        <p class="paragraph-content">${dataprojects[index].project}</p>
-        <div class="icon-content">
-        ${dataprojects[index].reactjs ? `<i class="fa-brands fa-react fa-lg"></i>`:""}
-        ${dataprojects[index].nodejs ? `<i class="fa-brands fa-node fa-lg"></i>` :""}
-        ${dataprojects[index].python ? `<i class="fa-brands fa-python fa-lg"></i>` :""} 
-        ${dataprojects[index].github ?  '<i class="fa-brands fa-github fa-lg"></i>' :""} 
-        </div>
-            <div class="btn-content">
-                <button>Edit </button>
-                <button>Delete</button>
-            </div>
-    </div>`
+    <div class="card shadow-lg mb-5 bg-body-tertiary rounded" style="width: 20rem; height: 31rem;">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVEVz04ruvOU-hqMa46ZV_jPTb3Db0XNBLiw&usqp=CAU" class="card-img-top p-2" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title fs-5 fw-bold">${dataprojects[index].title}</h5>
+                      <p class="card-text mb-1" >Duration :${getDate(dataprojects[index].startDate,dataprojects[index].endDate)}</p>
+                      <p class="card-text" style="height: 5rem; overflow:hidden;">${dataprojects[index].project}</p>
+                      <div class="icon-content mb-4">
+                        ${dataprojects[index].reactjs ? `<i class="fa-brands fa-react fa-2xl"></i>`:""}
+                        ${dataprojects[index].nodejs ? `<i class="fa-brands fa-node fa-2xl"></i>` :""}
+                        ${dataprojects[index].python ? `<i class="fa-brands fa-python fa-2xl"></i>` :""} 
+                        ${dataprojects[index].github ?  '<i class="fa-brands fa-github fa-2xl"></i>' :""} 
+                      </div>
+                    <div class="d-flex flex-row gap-2">
+                      <a href="#" class="btn btn-dark " style=" flex: 50%;">Edit</a>
+                      <a href="#" class="btn btn-dark " style=" flex: 50%;">Delete</a>
+                    </div>
+    </div>
+    `
     }
 }
 renderProject();

@@ -6,6 +6,7 @@
 body {
   font-family: "Poppins", sans-serif;
   background-color: #dce0e4;
+
 }
 
 .testimonial-head{
@@ -34,6 +35,7 @@ body {
 }
 
 .testimonial p{
+    text-align: center;
     height: 80px;
     overflow: hidden;
 }
@@ -53,8 +55,13 @@ body {
 }
 
 .btn-filter{
-    padding: 10px; border-radius: 10px; border: none; color: white;
+    padding: 15px 20px; border-radius: 10px; border: none; color: white;
     background-color: black;
+}
+
+.active{
+    color: black;
+    background-color: white;
 }
 
 .testimonial h3{
@@ -71,4 +78,7 @@ body {
     .testimonial img{
         width: 300px;
     }
+
+    .container-btn{gap: 5px;}
+    .btn-filter{padding: 5px 5px;}
 }

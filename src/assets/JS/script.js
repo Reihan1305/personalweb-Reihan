@@ -1,4 +1,5 @@
 function submitData() {
+    console.log("holla");
 let name = document.getElementById("name").value
 let email = document.getElementById("email").value
 let phonenumber = document.getElementById("phonenumber").value

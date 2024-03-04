@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="assets/css/form.css" rel="stylesheet"/>
+    <link href="assets/css/navbar.css" rel="stylesheet"/> <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>personal web</title>
+</head>
+<body class="bg-body-secondary">
+    <!-- navbar start -->
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/"><img src="assets/img/brandred.png" alt="logo" class="logo" width="50" height="auto"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link fw-bolder " aria-current="page" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link fw-bolder" aria-current="page" href="/my-project">Add Project</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link fw-bolder" aria-current="page" href="/testimonial">Testimonial</a>
+              </li>
+            </ul>
+              <a class="btn btn-outline-success bg-dark text-light active" href="/contact-me">Contact Me</a>
+          </div>
+        </div>
+      </nav>
+    <!-- form start -->
+    <form onsubmit="submitData()"> 
+      <h2 style="text-align: center;">Get In The touch</h2>
+      <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" class="form-control p-2" id="name">
+      </div>
+      <div class="mb-3">
+          <label for="email" class="form-label">Email address</label>
+          <input type="email" class="form-control p-2 " id="email" aria-describedby="emailHelp">
+      </div>
+      <div class="mb-3">
+        <label for="phonenumber" class="form-label">Phone Number</label>
+        <input type="number" class="form-control" id="phonenumber" aria-describedby="emailHelp">
+      </div>
+      <div>
+        <label for="subject" class="form-label">Subject</label>
+        <select id="subject" class="form-select p-2">
+          <option hidden></option>
+          <option>Fullstack Developer</option>
+          <option>Frontend Developer</option>
+          <option>Backend Developer</option>
+        </select>
+      </div>
+      <div>
+        <label for="message" class="form-label">message</label>
+        <textarea id="message" class="form-control" style="height: 50px; resize:none;"></textarea>
+      </div>
+      <div class="d-flex justify-content-end mt-3">
+        <button type="submit" class="btn btn-dark">Submit</button>
+      </div>
+    </form>
+    <script src="assets/JS/script.js"></script>
+    <script src="assets/JS/responsive.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

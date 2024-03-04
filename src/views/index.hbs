@@ -1,0 +1,102 @@
+<html>
+    <head>
+        <title>index</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="assets/css/project.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="assets/css/navbar.css">
+        <link rel="stylesheet" href="assets/css/index.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    </head>
+
+    <body class="bg-body-secondary">
+         <!-- navbar start -->
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/"><img src="assets/img/brandred.png" alt="logo" class="logo" width="50" height="auto"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link fw-bolder active" aria-current="page" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link fw-bolder" aria-current="page" href="/my-project">Add Project</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link fw-bolder" aria-current="page" href="/testimonial">Testimonial</a>
+              </li>
+            </ul>
+              <a class="btn btn-outline-success bg-dark text-light" href="/contact-me">Contact Me</a>
+          </div>
+        </div>
+      </nav>
+     <!--card start -->
+
+       
+        <div class="container-card">
+            <div class="card-right">
+                <h2>HELLO WELCOME TO MY HUT</h2>
+                <P >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium blanditiis fugit, fuga minus eum ab voluptate nobis molestias impedit, earum cum eaque, expedita corporis deserunt fugiat ipsam dolor reiciendis ducimus.
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis doloremque ullam sint placeat veritatis aliquam, hic asperiores assumenda dolores ad repudiandae corrupti quidem id esse perspiciatis in alias, saepe molestiae!
+                </P>
+                    <div class="container-download">
+                        <a href="/contact-me" class="contact">contact</a >
+                        <br>
+                        <a href="https://drive.google.com/file/d/18zSAWY1hr1b-cEaMBVAE8NMUqZvzyw1F/view?usp=sharing" class="download">Download Cv <i class="fa-solid fa-download"></i></a>
+                    </div>
+
+                    <div class="container-icon">
+                        <span><a class="icon" href="https://www.instagram.com/_freihan_/">
+                            <i class="fa-brands fa-square-instagram fa-2xl"></i></a>
+                        </span>
+                        <span><a class="icon" href="https://www.linkedin.com/in/reihan-firdaus-1078092aa/">
+                            <i class="fa-brands fa-linkedin fa-2xl"></i></a>
+                        </span>
+                        <span><a class="icon" href="https://www.facebook.com/profile.php?id=100017343370277">
+                            <i class="fa-brands fa-facebook fa-2xl"></i></a>
+                        </span>
+                    </div>
+            </div>
+
+            <div class="container-img">
+                    <img src="assets/img/punpun.jpg"/>
+                <div class="img-info">
+                    <H2>Reihan Firdaus</H2>
+                    <p>Fullstack Developer</p>
+                </div>
+            </div>
+        </div>
+<!-- my project -->
+<div class="project-container">
+  <h1>My Project</h1>
+    <div id="content" class="container-blog">
+      {{#each projects}}
+      <div class="card shadow-lg mb-5 bg-body-tertiary rounded" style="width: 20rem; height: 31rem;">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVEVz04ruvOU-hqMa46ZV_jPTb3Db0XNBLiw&usqp=CAU" class="card-img-top p-2" alt="...">
+          <div class="card-body">
+            <a href="/project-detail/{{@index}}" style="text-decoration: none; color:black"><h5 class="card-title fs-5 fw-bold">{{this.title}}</h5></a>
+                <p class="card-text mb-1" >Duration : {{this.duration}} </p>
+                <p class="card-text" style="height: 5rem; overflow:hidden;">{{this.content}}</p>
+                    <div class="icon-content mb-4">
+
+                        <i class="fa-brands {{this.reactjs}} fa-2xl"></i>
+                        <i class="fa-brands {{this.python}} fa-2xl"></i>
+                        <i class="fa-brands {{this.nodejs}} fa-2xl"></i>
+                        <i class="fa-brands {{this.github}} fa-2xl"></i>
+
+                   </div>
+                    <div class="d-flex flex-row gap-2">
+                      <a href="#" class="btn btn-dark " style=" flex: 50%;">Edit</a>
+                      <a href="#" class="btn btn-dark " style=" flex: 50%;">Delete</a>
+                    </div>
+          </div>
+      </div>
+      {{/each}}
+    </div>
+</div>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    </body>
+</html>

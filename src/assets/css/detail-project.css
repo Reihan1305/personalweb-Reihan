@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+* {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+body {
+  font-family: "Poppins", sans-serif !important;
+  background-color: #dce0e4 !important;
+}
+.container-project{
+    margin-top: 20px !important; 
+    text-align: center !important;
+    align-items: center !important;
+}
+
+.container-detail{
+    margin-top: 50PX !important; 
+    display: flex !important; 
+    flex-direction: row !important; 
+    justify-content: center !important; 
+    align-items: center !important;
+}
+
+.container-img{
+    margin-right: 100px !important;
+}
+
+.container-img img{
+    width: 600px !important; 
+    height: 300px !important;
+}
+
+.container-right{
+    height: 300px !important;
+}
+
+.date-tech ul{
+    list-style: none !important; 
+    display: flex !important; 
+    flex-direction: column !important;
+    align-items: start !important; 
+    gap: 10px !important;
+    margin-bottom: 20px !important;
+}
+
+.container-tech{
+    display: flex !important; 
+    flex-direction: row !important; 
+    align-items: start !important;
+}
+
+.container-tech div{
+    display: flex !important; 
+    flex-direction: column !important; 
+    text-align: start !important; 
+    margin-right: 20px !important; 
+    gap: 20px !important;
+    width: auto !important;
+}
+
+.container-content{
+    padding:0 50px !important; 
+    margin-top: 50px !important;
+    text-align: justify !important;
+}

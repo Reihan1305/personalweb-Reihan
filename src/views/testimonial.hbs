@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="assets/css/testimonial.css">
+    <title>personal web</title>
+</head>
+<body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/"><img src="/assets/img/brandred.png" alt="logo" class="logo" width="50" height="auto"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link fw-bolder" aria-current="page" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link fw-bolder" aria-current="page" href="/my-project">Add Project</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link fw-bolder active" aria-current="page" href="/testimonial">Testimonial</a>
+              </li>
+            </ul>
+              <a class="btn btn-outline-success bg-dark text-light" href="/contact-me">Contact Me</a>
+          </div>
+        </div>
+      </nav>
+    
+    <!-- testimonial -->
+    <h1 class="testimonial-head">My testimonial</h1>
+        <div class="container-btn">
+        <button class="btn-filter" onclick="allTestimonial()">all</button>
+            <button class="btn-filter" onclick="filteredTestimonial(1)">1 <i class="fa-solid fa-star fa-lg"></i></button>
+            <button class="btn-filter" onclick="filteredTestimonial(2)">2 <i class="fa-solid fa-star fa-lg"></i></button>
+            <button class="btn-filter" onclick="filteredTestimonial(3)">3 <i class="fa-solid fa-star fa-lg"></i></button>
+            <button class="btn-filter" onclick="filteredTestimonial(4)">4 <i class="fa-solid fa-star fa-lg"></i></button>
+            <button class="btn-filter" onclick="filteredTestimonial(5)">5 <i class="fa-solid fa-star fa-lg"></i></button>
+        </div>
+    <div class="container-testimonial" id="testimonials">
+        {{!-- <div class="card p-2" style="width: 25rem; height: 20rem;">
+            <img src="https://images.pexels.com/photos/10080749/pexels-photo-10080749.jpeg?auto=compress&cs=tinysrgb&w=400" style="height: 60%; object-fit:cover" class="card-img-top" alt="...">
+              <div class="card-body">
+                  <p class="card-text mb-2" style="height: 30%; overflow: hidden;">Mainnya bagus sekali, Mainnya bagus sekali, Mainnya bagus sekali, Mainnya bagus sekali, Mainnya bagus sekaliMainnya bagus sekali, Mainnya bagus sekali, Mainnya bagus sekali, Mainnya bagus sekali, Mainnya bagus sekali</p>
+                  <h5 class="card-title d-flex justify-content-end">~reihan</h5>
+              </div>
+        </div> --}}
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="assets/JS/testimonial.js"></script>
+    <script src="assets/JS/responsive.js"></script>
+</body>
+</html>

@@ -40,11 +40,13 @@ data =[
 const testimonials =() =>{
     let datahtml = ""
     data.forEach(function (data){
-        datahtml +=`<div class="testimonial">
-                    <img src="${data.image}"/>
-                    <p>${data.comment}</p>
-                    <h3>~ ${data.nama}</h3>
-                    </div>`
+        datahtml +=`<div class="card p-2" style="width: 25rem; height: 20rem;">
+        <img src="${data.image}" style="height: 60%; object-fit:cover" class="card-img-top" alt="...">
+          <div class="card-body">
+              <p class="card-text mb-2" style="height: 30%; overflow: hidden;">${data.comment}</p>
+              <h5 class="card-title d-flex justify-content-end">${data.author}</h5>
+          </div>
+    </div>`
 })
     document.getElementById("testimonials").innerHTML = datahtml
     }

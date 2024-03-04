@@ -30,10 +30,6 @@ input,select,textarea{
     box-shadow: 0 0 5px gray;
 }
 
-select{
-    width: 105%;
-}
-
 textarea{
     resize: none;
     height: 50px;
