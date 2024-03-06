@@ -59,6 +59,9 @@ app.get("/",home);
 app.get("/contact-me",contactMe);
 app.get("/my-project",myProject);
 app.post("/my-project",handleAddProject);
+app.get("/delete-project/:id",handleDeleteProject);
+app.get("/edit-project/:id",editProject);
+app.post("/edit-project",handleEditProject);
 app.get("/project-detail/:id",projectDetail);
 app.get("/testimonial",testimonial);
 
@@ -74,16 +77,34 @@ function handleAddProject(req, res) {
     const {title,startdate,enddate,content,reactjs,python,nodejs,github} = req.body
     
     const duration= getDateDistance(startdate ,enddate)
-    console.log(duration)
     projects.unshift({title,startdate,enddate,duration,content,reactjs,python,nodejs,github})
     res.redirect("/")
 }
 
+function handleDeleteProject(req,res){
+    const { id } = req.params;
+    projects.splice(id,1);
+    res.redirect("/")
+}
+
+function editProject(req,res){
+    const { id } = req.params;
+    const projectData = projects[+id];
+    res.render("edit-project",{projects : projectData});
+}
+
+function handleEditProject(req,res){
+    const { id }= req.params;
+    const {title,startdate,enddate,content,reactjs,python,nodejs,github} = req.body;
+    const duration = getDateDistance(startdate,enddate)
+    projects.splice(id,1,
+        {title,startdate,enddate,duration,content,reactjs,python,nodejs,github});
+    res.redirect("/")
+}
 
 async function projectDetail(req,res){
     const { id } =req.params
     const projectDetailsData = projects[id];
-    console.log(projects)
     res.render(`project-detail`,{projects : projectDetailsData})};
 
 function testimonial(req,res){
