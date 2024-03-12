@@ -1,10 +1,18 @@
 import express from 'express';
+// import sequelize here
+import { Sequelize,QueryTypes } from 'sequelize';
 import serveStatic from 'serve-static';
 const app = express()
 const port = 3000
+import connection from "./src/config/connection.js";
+
+// create instance sequelize connection
+const sequelizeconnect = new Sequelize( connection.development )
+
 
 app.set("view engine","hbs")
 app.set("views","src/views")
+
 
 app.use("/assets", express.static("src/assets"))
 app.use(express.urlencoded({extended:false}))
@@ -61,51 +69,115 @@ app.get("/my-project",myProject);
 app.post("/my-project",handleAddProject);
 app.get("/delete-project/:id",handleDeleteProject);
 app.get("/edit-project/:id",editProject);
-app.post("/edit-project",handleEditProject);
+app.post("/edit-project/:id",handleEditProject);
 app.get("/project-detail/:id",projectDetail);
 app.get("/testimonial",testimonial);
 
-const projects =[]
 
-function home (req, res){res.render("index",{projects});};
+async function home (req, res){
+    try{
+        const queryselect = `SELECT * FROM projects ORDER By id DESC;`
+        
+        const project = await sequelizeconnect.query(queryselect, {type:QueryTypes.SELECT})
+        
+        const object = project.map((projects)=>{
+            return{
+                ...projects,
+                duration:getDateDistance(projects.startdate,projects.enddate)
+            }
+        })
+
+
+        res.render("index",{projects : object});
+    }catch(error){
+        console.log(error)
+    }};
+    
+    
 
 function contactMe (req,res){res.render("contact-me")};
 
 function myProject (req,res) {res.render("my-project")};
 
-function handleAddProject(req, res) {
-    const {title,startdate,enddate,content,reactjs,python,nodejs,github} = req.body
+async function handleAddProject(req, res) {
+    try{ 
+        const {title,startdate,enddate,content,reactjs,python,nodejs,github} = req.body
+        const image ="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVEVz04ruvOU-hqMa46ZV_jPTb3Db0XNBLiw&usqp=CAU"
+        const queryinsert = `INSERT INTO projects(
+        title, content, startdate, enddate, reactjs, nodejs, github, "Python", image, "createdAt", "updatedAt")
+        VALUES ('${title}', '${content}', '${startdate}', '${enddate}', '${github}', '${reactjs}', '${nodejs}', '${python}', '${image}', now(),now())`;
+
+        await sequelizeconnect.query(queryinsert)
     
-    const duration= getDateDistance(startdate ,enddate)
-    projects.unshift({title,startdate,enddate,duration,content,reactjs,python,nodejs,github})
+    res.redirect("/")}
+    catch(error){
+        console.error();
+    }
+}
+
+async function handleDeleteProject(req,res){
+   try{
+    const  id = req.params.id;
+    const querydelete =`DELETE FROM projects WHERE id=${id};`
+
+    await sequelizeconnect.query(querydelete)
     res.redirect("/")
+}catch(error){
+    console.log(error);
+}
 }
 
-function handleDeleteProject(req,res){
+async function editProject(req,res){
+    try{
     const { id } = req.params;
-    projects.splice(id,1);
-    res.redirect("/")
+    const queryselect =`SELECT * FROM projects WHERE id=${id};`
+
+    const project =await sequelizeconnect.query(queryselect,{type:QueryTypes.SELECT})
+
+    const object =project.map((projects)=>{
+        return{
+            ...projects
+        }
+    })
+    res.render("edit-project",{projects : object[0]});}
+    catch(error){
+        console.error();
+    }
 }
 
-function editProject(req,res){
-    const { id } = req.params;
-    const projectData = projects[+id];
-    res.render("edit-project",{projects : projectData});
-}
-
-function handleEditProject(req,res){
-    const { id }= req.params;
+async function handleEditProject(req,res){
+  try{
+    const { id } =  req.params;
     const {title,startdate,enddate,content,reactjs,python,nodejs,github} = req.body;
-    const duration = getDateDistance(startdate,enddate)
-    projects.splice(id,1,
-        {title,startdate,enddate,duration,content,reactjs,python,nodejs,github});
+
+    const queryupdate =`UPDATE projects SET title='${title}',startdate='${startdate}',enddate='${enddate}', content='${content}', reactjs='${reactjs}', nodejs='${nodejs}', github='${github}', "Python"='${python}',"updatedAt"=now() WHERE id=${id};`;
+
+    await sequelizeconnect.query(queryupdate,{type:QueryTypes.UPDATE})
+
     res.redirect("/")
+}catch(error){
+    console.error();
+}
 }
 
 async function projectDetail(req,res){
-    const { id } =req.params
-    const projectDetailsData = projects[id];
-    res.render(`project-detail`,{projects : projectDetailsData})};
+    try{
+    const id = req.params.id;
+    const queryselect =`SELECT * FROM projects WHERE id=${id};`
+
+    const project =await sequelizeconnect.query(queryselect,{type:QueryTypes.SELECT})
+
+    const object =project.map((projects)=>{
+        return{
+            ...projects,
+            duration:getDateDistance(projects.startdate,projects.enddate)
+        }
+    })
+
+    res.render("project-detail",{projects : object[0]})
+}catch(error){
+    console.log(error);}
+};
 
 function testimonial(req,res){
     res.render("testimonial")};

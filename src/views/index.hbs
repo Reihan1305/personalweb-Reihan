@@ -77,20 +77,20 @@
       <div class="card shadow-lg mb-5 bg-body-tertiary rounded" style="width: 20rem; height: 31rem;">
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVEVz04ruvOU-hqMa46ZV_jPTb3Db0XNBLiw&usqp=CAU" class="card-img-top p-2" alt="...">
           <div class="card-body">
-            <a href="/project-detail/{{@index}}" style="text-decoration: none; color:black"><h5 class="card-title fs-5 fw-bold">{{this.title}}</h5></a>
+            <a href="/project-detail/{{this.id}}" style="text-decoration: none; color:black"><h5 class="card-title fs-5 fw-bold">{{this.title}}</h5></a>
                 <p class="card-text mb-1" >Duration : {{this.duration}} </p>
                 <p class="card-text" style="height: 5rem; overflow:hidden;">{{this.content}}</p>
                     <div class="icon-content mb-4 gap-1">
 
                         <i class="fa-brands {{this.reactjs}} fa-2xl"></i>
-                        <i class="fa-brands {{this.python}} fa-2xl"></i>
+                        <i class="fa-brands {{this.Python}} fa-2xl"></i>
                         <i class="fa-brands {{this.nodejs}} fa-2xl"></i>
                         <i class="fa-brands {{this.github}} fa-2xl"></i>
 
                    </div>
                     <div class="d-flex flex-row gap-2">
-                      <a href="/edit-project/{{@index}}" class="btn btn-dark " style=" flex: 50%;">Edit</a>
-                      <a href="/delete-project/{{@index}}" class="btn btn-dark " style=" flex: 50%;">Delete</a>
+                      <a href="/edit-project/{{this.id}}" class="btn btn-dark " style=" flex: 50%;">Edit</a>
+                      <a href="/delete-project/{{this.id}}" class="btn btn-dark " style=" flex: 50%;">Delete</a>
                     </div>
           </div>
       </div>
