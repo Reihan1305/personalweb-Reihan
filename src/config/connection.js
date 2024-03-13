@@ -1,9 +1,9 @@
-export default {
+ export default {
   "development": {
     "username": "postgres",
     "password": "1305",
     "database": "project_b53",
-    "host": "localhost",
+    "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "test": {

@@ -20,15 +20,34 @@
               <li class="nav-item">
                 <a class="nav-link fw-bolder" aria-current="page" href="/">Home</a>
               </li>
+              {{#if islogin}}
               <li class="nav-item">
-                <a class="nav-link fw-bolder active" aria-current="page" href="/my-project">Add Project</a>
+                <a class="nav-link fw-bolder" aria-current="page" href="/my-project">Add Project</a>
               </li>
+              {{/if}}
               <li class="nav-item">
                 <a class="nav-link fw-bolder" aria-current="page" href="/testimonial">Testimonial</a>
               </li>
             </ul>
-              <a class="btn btn-outline-success bg-dark text-light" href="/contact-me">Contact Me</a>
           </div>
+             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                 {{#if islogin}}
+                <li class="nav-item">
+                  <a class="nav-link fw-bolder active" href="#">Hello, {{user}}</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link fw-bolder" aria-current="page" href="/logout">Log Out</a>
+                </li>
+                {{else}}
+                 <li class="nav-item">
+                  <a class="nav-link fw-bolder" aria-current="page" href="/register">Register</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link fw-bolder" aria-current="page" href="/login">Login</a>
+                </li>
+                {{/if}}
+              <a class="btn btn-outline-success bg-dark text-light" href="/contact-me">Contact Me</a>
+            </ul>
         </div>
       </nav>
 {{!-- form bootstrap --}}
@@ -57,7 +76,7 @@
     <div class="d-flex flex-column"    >
         <div class="p-1" style="width: 150px;">
           <div class="form-check">
-              <input class="form-check-input me-3" style="padding: 10px;" name="reactjs" type="checkbox" value="fa-react" id="reactjs" {{#if projects.reactjs}}checked{{/if}}>
+              <input class="form-check-input me-3" style="padding: 10px;" name="reactjs" type="checkbox"  id="reactjs" {{#if projects.reactjs}}checked{{/if}}>
               <label class="form-check-label" for="reactjs">
                 React JS
               </label>    
@@ -65,7 +84,7 @@
         </div>
         <div class="p-1" style="width: 150px;">
           <div class="form-check">
-              <input class="form-check-input me-3" style="padding: 10px;" name="python" type="checkbox" value="fa-python" id="python" {{#if projects.python}}checked{{/if}}>
+              <input class="form-check-input me-3" style="padding: 10px;" name="python" type="checkbox"  id="python" {{#if projects.Python}}checked{{/if}}>
               <label class="form-check-label" for="python">
                 Python
               </label>    
@@ -75,7 +94,7 @@
     <div class="d-flex flex-column">
       <div class="p-1" style="width: 150px;">
         <div class="form-check">
-              <input class="form-check-input me-3" style="padding: 10px;" name="nodejs" type="checkbox" value="fa-node" id="nodejs"{{#if projects.nodejs}} checked {{/if}}>
+              <input class="form-check-input me-3" style="padding: 10px;" name="nodejs" type="checkbox"  id="nodejs"{{#if projects.nodejs}} checked {{/if}}>
               <label class="form-check-label" for="nodejs">
                 Node Js
               </label>    
@@ -83,7 +102,7 @@
       </div>
       <div class="p-1" style="width: 150px;">
         <div class="form-check">
-              <input class="form-check-input me-3" style="padding: 10px;" name="github" type="checkbox" value="fa-github" id="github" {{#if projects.github}} checked {{/if}}>
+              <input class="form-check-input me-3" style="padding: 10px;" name="github" type="checkbox"  id="github" {{#if projects.github}} checked {{/if}}>
               <label class="form-check-label" for="github">
                 Github
               </label>    

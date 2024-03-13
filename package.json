@@ -19,9 +19,13 @@
   },
   "homepage": "https://github.com/Reihan1305/personalweb-reihan#readme",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "express": "^4.18.3",
+    "express-flash": "^0.0.2",
+    "express-session": "^1.18.0",
     "font-awesome": "^4.7.0",
     "hbs": "^4.2.0",
+    "mysql2": "^3.9.2",
     "nodemon": "^3.1.0",
     "path": "^0.12.7",
     "pg": "^8.11.3",
