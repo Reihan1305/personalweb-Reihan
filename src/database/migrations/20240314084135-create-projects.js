@@ -13,7 +13,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       content: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       startdate: {
         type: Sequelize.DATE
@@ -35,6 +35,15 @@ module.exports = {
       },
       image: {
         type: Sequelize.STRING
+      },
+      author: {
+        type: Sequelize.INTEGER,
+        references:{
+          model: 'users',
+          key: 'id'
+        },
+        onDelete:'CASCADE',
+        onUpdate:'CASCADE'
       },
       createdAt: {
         allowNull: false,

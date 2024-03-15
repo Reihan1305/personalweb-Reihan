@@ -9,51 +9,58 @@
     </head>
 
     <body class="bg-body-secondary">
-         <!-- navbar start -->
-    <nav class="navbar navbar-expand-lg bg-light">
+<!-- navbar start -->
+     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="/"><img src="assets/img/brandred.png" alt="logo" class="logo" width="50" height="auto"></a>
+          <a class="navbar-brand" href="/"><img src="/assets/img/brandred.png" alt="logo" class="logo" width="50" height="auto"></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link fw-bolder active" aria-current="page" href="/">Home</a>
-              </li>
-              {{#if islogin}}
-              <li class="nav-item">
-                <a class="nav-link fw-bolder" aria-current="page" href="/my-project">Add Project</a>
-              </li>
-              {{/if}}
-              <li class="nav-item">
-                <a class="nav-link fw-bolder" aria-current="page" href="/testimonial">Testimonial</a>
-              </li>
-            </ul>
-          </div>
-           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            {{#if islogin}}
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                  <a class="nav-link fw-bolder active" href="#">Hello, {{user}}</a>
+                  <a class="nav-link fw-bolder active" aria-current="page" href="/">Home</a>
                 </li>
+                {{#if islogin}}
                 <li class="nav-item">
-                  <a class="nav-link fw-bolder" aria-current="page" href="/logout">Log Out</a>
-                </li>
-                {{else}}
-                 <li class="nav-item">
-                  <a class="nav-link fw-bolder" aria-current="page" href="/register">Register</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link fw-bolder" aria-current="page" href="/login">Login</a>
+                  <a class="nav-link fw-bolder" aria-current="page" href="/add-project">Add Project</a>
                 </li>
                 {{/if}}
-              <a class="btn btn-outline-success bg-dark text-light" href="/contact-me">Contact Me</a>
-            </ul>
+                <li class="nav-item">
+                  <a class="nav-link fw-bolder" aria-current="page" href="/testimonial">Testimonial</a>
+                </li>
+              </ul>
+              <ul class="navbar-nav me-5 mb-2 mb-lg-0">
+                  {{#if islogin}}
+                  <li class="nav-item">
+                    <a class="nav-link fw-bolder active" href="#">Hello, {{user}}</a>
+                  </li>
+                  <li class="nav-item me-3">
+                    <a class="nav-link fw-bolder" aria-current="page" href="/logout">Log Out</a>
+                  </li>
+                  {{else}}
+                  <li class="nav-item">
+                    <a class="nav-link fw-bolder" aria-current="page" href="/register">Register</a>
+                  </li>
+                  <li class="nav-item me-3">
+                    <a class="nav-link fw-bolder" aria-current="page" href="/login">Login</a>
+                  </li>
+                  {{/if}}
+                <a class="btn btn-outline-success bg-dark text-light" href="/contact-me">Contact Me</a>
+              </ul>
+          </div>
         </div>
       </nav>
-     <!--card start -->
-
-       
+    <!-- navbar finish -->
+      {{!-- flash --}}
+      {{#if messages.succes}}
+        <div class="alert alert-success" role="alert">
+        <div class="container">
+      {{messages.succes}}
+      </div>
+    </div>
+    {{/if}}
+     <!--card start --> 
         <div class="container-card">
             <div class="card-right">
                 <h2>HELLO WELCOME TO MY HUT</h2>
@@ -93,10 +100,12 @@
     <div id="content" class="container-blog">
       {{#each projects}}
       <div class="card shadow-lg mb-5 bg-body-tertiary rounded" style="width: 20rem; height: 31rem;">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVEVz04ruvOU-hqMa46ZV_jPTb3Db0XNBLiw&usqp=CAU" class="card-img-top p-2" alt="...">
+        <img src="upload/{{this.image}}" class="card-img-top p-2" style="height: 15rem;" alt="...">
           <div class="card-body">
             <a href="/project-detail/{{this.id}}" style="text-decoration: none; color:black"><h5 class="card-title fs-5 fw-bold">{{this.title}}</h5></a>
-                <p class="card-text mb-1" >Duration : {{this.duration}} </p>
+              
+                <span class="card-text fw-h6 mb-1" >Duration : {{this.duration}} ||</span>
+                <span class="card-text fw-h6 mb-1" >Author : <b>{{this.author}}</b> </span>
                 <p class="card-text" style="height: 5rem; overflow:hidden;">{{this.content}}</p>
                     <div class="icon-content mb-4 gap-1">
                         <i class="fa-brands {{#if this.reactjs}} fa-react {{/if}} fa-2xl"></i>
@@ -104,16 +113,16 @@
                         <i class="fa-brands {{#if this.Python}} fa-python {{/if}} fa-2xl"></i>
                         <i class="fa-brands {{#if this.github}} fa-github {{/if}} fa-2xl"></i>
                    </div>
-                    {{!-- {{#if islogin}} --}}
+                    {{#if islogin}}
                     <div class="d-flex flex-row gap-2">
                       <a href="/edit-project/{{this.id}}" class="btn btn-dark " style=" flex: 50%;">Edit</a>
                       <a href="/delete-project/{{this.id}}" class="btn btn-dark " style=" flex: 50%;">Delete</a>
                     </div>
-                    {{!-- {{else}}
+                    {{else}}
                     <div class="d-flex flex-row gap-2">
                       <a href="/project-detail/{{this.id}}" class="btn btn-dark " style=" flex: 100%;">See Detail</a>
                     </div>
-                    {{/if}} --}}
+                    {{/if}} 
           </div>
       </div>
       {{/each}}

@@ -5,20 +5,32 @@ import serveStatic from 'serve-static';
 import bcrypt from "bcrypt";
 import session from "express-session";
 import flash from "express-flash";
+import multer from 'multer';
+import connection from "./src/config/connection.js";
 
 const app = express()
 const port = 3000
-import connection from "./src/config/connection.js";
 
 // create instance sequelize connection
 const sequelizeconnect = new Sequelize( connection.development )
 
+const multerconfig =multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'src/upload')
+      },
+      filename: function (req, file, cb) {
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+        cb(null, file.fieldname + '-' + uniqueSuffix +".png")
+      }
+})
 
+const upload = multer ({ storage: multerconfig });
 app.set("view engine","hbs")
 app.set("views","src/views")
 
 
 app.use("/assets", express.static("src/assets"));
+app.use("/upload", express.static("src/upload"));
 app.use(express.urlencoded({extended:false}));
 app.use(flash());
 app.use(session({
@@ -81,11 +93,11 @@ function getDateDistance(start,end){
 
 app.get("/",home);
 app.get("/contact-me",contactMe);
-app.get("/my-project",myProject);
-app.post("/my-project",handleAddProject);
+app.get("/add-project",myProject);
+app.post("/add-project",upload.single("image"), handleAddProject);
 app.get("/delete-project/:id",handleDeleteProject);
 app.get("/edit-project/:id",editProject);
-app.post("/edit-project/:id",handleEditProject);
+app.post("/edit-project/:id",upload.single("image"), handleEditProject);
 app.get("/project-detail/:id",projectDetail);
 app.get("/testimonial",testimonial);
 app.get("/register",formregister);
@@ -97,21 +109,45 @@ app.get("/logout",logout)
 
 async function home (req, res){
     try{
-        const queryselect = `SELECT * FROM projects ORDER By id DESC;`
+        
+        
+        if(req.session.islogin === true){
+            const id =req.session.iduser
+            const queryselect = `SELECT P.id, P.title, P.content, P.startdate, P.enddate, P.reactjs, P.nodejs, P.github, P."Python", P.image,U.username AS author FROM users u 
+        INNER JOIN "projects" P on P.author = U.id WHERE U.id=${id} ORDER by id DESC;`
+        
+        const project = await sequelizeconnect.query(queryselect, {type:QueryTypes.SELECT})
+        
+
+        const object = project.map((projects)=>{
+            return{
+                ...projects,
+                duration:getDateDistance(projects.startdate,projects.enddate),
+                islogin:req.session.islogin
+            }
+        })
+        res.render("index",{
+            projects : object,
+            islogin :req.session.islogin,
+            user : req.session.user});
+        }
+            else{
+                const queryselect = `SELECT P.id, P.title, P.content, P.startdate, P.enddate, P.reactjs, P.nodejs, P.github, P."Python", P.image,U.username AS author FROM projects P 
+        inner JOIN "users" U on P.author = U.id ORDER by id DESC;`
         
         const project = await sequelizeconnect.query(queryselect, {type:QueryTypes.SELECT})
         
         const object = project.map((projects)=>{
             return{
                 ...projects,
-                duration:getDateDistance(projects.startdate,projects.enddate)
+                duration:getDateDistance(projects.startdate,projects.enddate),
+                islogin:req.session.islogin
             }
         })
-
         res.render("index",{
             projects : object,
             islogin :req.session.islogin,
-            user : req.session.user});
+            user : req.session.user});}
     }catch(error){
         console.log(error)
     }};
@@ -125,7 +161,7 @@ function contactMe (req,res){
 };
 
 function myProject (req,res){
-    res.render("my-project",{
+    res.render("add-project",{
         islogin :req.session.islogin,
         user : req.session.user})
     };
@@ -133,18 +169,18 @@ function myProject (req,res){
 async function handleAddProject(req, res) {
     try{ 
         const {title,startdate,enddate,content,reactjs,python,nodejs,github} = req.body
-        const image ="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVEVz04ruvOU-hqMa46ZV_jPTb3Db0XNBLiw&usqp=CAU"
-        
-        console.log(startdate,enddate);
+
+        const image =req.file.filename;
 
         const isreact = reactjs ? true : false;
         const ispython = python ? true : false;
         const isnode = nodejs ? true : false;
         const isgithub = github ? true : false;
+        const author = req.session.iduser;
 
         const queryinsert = `INSERT INTO projects(
-        title, content, startdate, enddate, reactjs, nodejs, github, "Python", image, "createdAt", "updatedAt")
-        VALUES ('${title}', '${content}', '${startdate}', '${enddate}', ${isgithub}, ${isreact}, ${isnode}, ${ispython}, '${image}', now(),now())`;
+        title, content, startdate, enddate, reactjs, nodejs, github, "Python", image, author , "createdAt", "updatedAt")
+        VALUES ('${title}', '${content}', '${startdate}', '${enddate}', ${isgithub}, ${isreact}, ${isnode}, ${ispython}, '${image}', ${author} ,now(),now())`;
 
         await sequelizeconnect.query(queryinsert)
     
@@ -218,6 +254,7 @@ async function projectDetail(req,res){
         }
     })
 
+    console.log(object);
     res.render("project-detail",{
         projects : object[0],
         islogin :req.session.islogin,
@@ -246,7 +283,8 @@ async function register(req,res){
         else{
         const queryinsert =`INSERT INTO users (username,email, password, "createdAt","updatedAt") VALUES ('${username}','${email}','${hashpassword}',now(),now());`
         await sequelizeconnect.query(queryinsert) 
-        res.redirect("/")
+        req.flash("succes","Register succes")
+        res.redirect("/login")
         }
     })
     }
@@ -264,8 +302,7 @@ async function login(req,res){
         const {email,password}=req.body;
         const selectemail =`SELECT * FROM users WHERE email='${email}';`
 
-        const isemail = await sequelizeconnect.query(selectemail,{type:QueryTypes.SELECT})
-        console.log(isemail);    
+        const isemail = await sequelizeconnect.query(selectemail,{type:QueryTypes.SELECT}); 
         if(!isemail.length){
             req.flash("danger", "Email has not been registered");   
             return res.redirect("/login")
@@ -280,9 +317,10 @@ async function login(req,res){
                     return res.redirect("/login")
                 } else{
                     req.session.islogin =true;
-                    req.session.user = isemail[0].username
-                    
-                    req.flash("succes","Login succes")
+                    req.session.user = isemail[0].username;
+                    req.session.iduser = isemail[0].id;
+                
+                    req.flash("succes","Login success")
                     return res.redirect("/")
                 }
              })

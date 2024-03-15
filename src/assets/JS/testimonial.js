@@ -34,7 +34,7 @@ const getTestimonialData =()=>{
         let testimonialHtml =""
         testimonials.data.forEach((data) => {
         testimonialHtml +=`
-        <div class="card p-2" style="width: 25rem; height: 20rem;">
+        <div class="card p-2 testimonial">
         <img src="${data.image}" style="height: 60%; object-fit:cover" class="card-img-top" alt="...">
           <div class="card-body">
               <p class="card-text mb-2" style="height: 4rem; overflow: hidden;">${data.comment}</p>
@@ -62,7 +62,7 @@ const getTestimonialData =()=>{
         else{
         datafilter.forEach( function (data){
             testimonialHtml +=`
-            <div class="card p-2" style="width: 25rem; height: 20rem;">
+            <div class="card p-2 testimonial">
                  <img src="${data.image}" style="height: 60%; object-fit:cover" class="card-img-top" alt="...">
                     <div class="card-body">
                         <p class="card-text mb-2" style="height: 30%; overflow: hidden;">${data.comment}</p>

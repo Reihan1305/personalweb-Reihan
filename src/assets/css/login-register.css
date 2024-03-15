@@ -1,0 +1,23 @@
+.container-form{
+    width: 700px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-style{
+    width: 500px !important;
+}
+
+@media screen and (max-width:700px) {
+.container-form{
+    width: 300px;
+    margin: 1px auto;
+}
+
+.input-style{
+    width: 250px !important;
+}
+}

@@ -25,11 +25,10 @@ body {
 }
 
 .testimonial{
-    background-color: white;
     box-shadow: 0 0 10px black; 
     border-radius: 10px;
-    width: 400px;
-    height: 320px;
+    width: 25rem;
+    height: 20rem;
     overflow: hidden;
     padding: 10px;
 }
@@ -42,7 +41,7 @@ body {
 
 .testimonial img{
     border-radius: 10px 10px 0 0;
-    width: 400px; 
+    margin: auto; 
     height:200px;
     object-fit: cover;
 }
@@ -73,10 +72,10 @@ body {
         flex-direction: column;
     }
     .testimonial{
-        width: 300px;
+        width: 20rem;
     }
     .testimonial img{
-        width: 300px;
+        width: 19rem;
     }
 
     .container-btn{gap: 5px;}
